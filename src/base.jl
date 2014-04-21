@@ -1,7 +1,7 @@
-
 # Load & initialize CUDA driver
 
-# const libcuda = dlopen("libcuda")
+const CUDA_LIB = @windows? "nvcuda.dll" : "libcuda"
+dlopen(CUDA_LIB)	# loads library, throws an error if not found
 
 macro cucall(fv, argtypes, args...)
     f = eval(fv)
